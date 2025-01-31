@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 
 const faqSchema = mongoose.Schema({
@@ -11,14 +11,13 @@ const faqSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    translations:{
-        question_hi: {
-            type: String
+    translations: {
+        type: Map,
+        of: {
+            question: String,
+            answer: String
         },
-        answer_hi:{
-            type: String
-        },
-
+        default: {}
     }
 
     
@@ -28,12 +27,20 @@ const faqSchema = mongoose.Schema({
 faqSchema.methods.getTranslatedText = function (lang){
     // dynamically fetch the translated faq
 
-    
-    // console.log(`ye wala aaya  ${lang}`)
-    return {
-        question: this.translations[`question_${lang}`] || this.question,
-        answer: this.translations[`answer_${lang}`] || this.answer
+    const translation = this.translations.get(lang);
+
+    if(translation){
+        return {
+            question: translation.question,
+            answer: translation.answer
+        };
+    }else{
+        return {
+            question: this.question,
+            answer: this.answer
+        };
     }
+  
 }
 
 const Faq = mongoose.model("Faq", faqSchema);
