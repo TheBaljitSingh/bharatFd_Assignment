@@ -17,15 +17,19 @@ const faqSchema = mongoose.Schema({
         },
         answer_hi:{
             type: String
-        }
+        },
+
     }
 
     
 
 });
 
-faqSchema.method.getTranslatedText = (lang)=>{
+faqSchema.methods.getTranslatedText = function (lang){
     // dynamically fetch the translated faq
+
+    
+    // console.log(`ye wala aaya  ${lang}`)
     return {
         question: this.translations[`question_${lang}`] || this.question,
         answer: this.translations[`answer_${lang}`] || this.answer

@@ -2,7 +2,10 @@ import express from 'express';
 import Faq from "../model/faqModel.js"
 
 export const getAllFaq = async (req, res)=>{
-    console.log('fetching all faqs');
+
+
+    console.log(req.query.lang);
+
     try {
 
         const lang = req.query.lang || "en";
@@ -12,7 +15,9 @@ export const getAllFaq = async (req, res)=>{
 
         const faqs = await Faq.find();
 
-        const translatedFaqs = faqs.map((faq)=> faq.getTranslatedText(lang));
+        const translatedFaqs = faqs.map((faq)=> {
+            return faq.getTranslatedText(lang); // Convert plain object to Mongoose instance and then retured
+        });
 
 
         res.status(200).json({success: true, translatedFaqs});
@@ -33,9 +38,11 @@ export const createFaq  = async(req, res)=>{
 
     try {
 
-        const {question, answer, translation} = req.body;
+        const {question, answer, translations} = req.body;
 
-        const newFaq = new Faq({question, answer, translation});
+        console.log(translations);
+
+        const newFaq = new Faq({question, answer, translations});
 
         await newFaq.save();
 
