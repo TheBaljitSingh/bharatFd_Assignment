@@ -1,6 +1,4 @@
-Here’s an updated `README.md` for your project:
 
-```markdown
 # BharatFD Assignment
 
 This is the backend for the BharatFD Assignment. The backend server is built with Express.js, MongoDB, and Redis for caching FAQs.
@@ -12,16 +10,15 @@ This is the backend for the BharatFD Assignment. The backend server is built wit
 - **Caching**: FAQ data is cached using Redis to improve performance.
 - **Server**: Default server port is `3000`.
 
-## Installation
 
 ### 1. Clone the Repository
 
 Clone the repository to your local machine.
 
-```bash
+
 git clone https://github.com/TheBaljitSingh/bharatFd_Assignment.git
 cd bharatFd_Assignment
-```
+
 
 ### 2. Install Dependencies
 
@@ -81,7 +78,7 @@ Response:
       "question": "क्या है?",
       "answer": "यह एक सवाल है।"
     },
-    ...
+    
   ]
 }
 ```
@@ -173,9 +170,3 @@ Response:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 ```
-
-### How to Update the `README.md`
-1. Replace the placeholder values in the environment variable section (`MONGO_URI`, `REDIS_HOST`, `REDIS_PORT`) with actual values.
-2. Ensure that the API section is aligned with the API endpoints in your actual project.
-
-Let me know if you'd like further changes!
