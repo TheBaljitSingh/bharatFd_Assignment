@@ -2,11 +2,23 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from "cors";
 import { configDotenv } from "dotenv";
-
+import client from './config/redis.js';
 
 configDotenv();
 
 const app = express();
+// redias setup
+
+
+
+
+
+
+
+
+
+
+// UPSTASH_ENDPOINT
 
 const corsOptions = {
   origin: `${process.env.FRONTEND_URL}`,

@@ -1,9 +1,13 @@
 import 'dotenv/config'
 import {connectDatabase} from "./db/conn.js";
 
+
 import server from "./app.js";
 
+import redis from "./app.js"
+
 connectDatabase();
+
 
 
 
